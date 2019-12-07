@@ -7,9 +7,11 @@ def prob4(h, v, theta, ax, ay):
     if ay >= 0:
         return print("There would be no free fall!")
     
-    t = np.linspace(0, 10000, 10000001)
-    
     y = np.array([(1/2)*ay, v*np.sin(theta * (np.pi/180)), h])
+    
+    t = np.roots(y)
+    t = np.linspace(0, t[t > 0], 1000)
+    
     y = np.polyval(y, t)
     y  = y[y >= 0]
     
